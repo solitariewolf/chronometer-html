@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cronômetro</title>
+</head>
+<body>
+
+  <div id="cronometro">00:00:00</div>
+  <button onclick="iniciar()">Iniciar</button>
+  <button onclick="parar()">Parar</button>
+  <button onclick="zerar()">Zerar</button>
+
+  <p style="text-align: center; margin-top: 10px;">By: Cygnus X-1</p>
+
+  <script>
+    var tempo = 0;
+    var cronometro;
+
+    function iniciar() {
+      cronometro = setInterval(() => {
+        tempo++;
+        atualizarCronometro();
+      }, 1000);
+    }
+
+    function parar() {
+      clearInterval(cronometro);
+    }
+
+    function zerar() {
+      tempo = 0;
+      atualizarCronometro();
+    }
+
+    function atualizarCronometro() {
+      var horas = Math.floor(tempo / 3600);
+      var minutos = Math.floor((tempo % 3600) / 60);
+      var segundos = tempo % 60;
+
+      var horasStr = horas < 10 ? "0" + horas : horas;
+      var minutosStr = minutos < 10 ? "0" + minutos : minutos;
+      var segundosStr = segundos < 10 ? "0" + segundos : segundos;
+
+      var cronometroDiv = document.getElementById("cronometro");
+      cronometroDiv.innerHTML = `${horasStr}:${minutosStr}:${segundosStr}`;
+    }
+  </script>
+
+</body>
+</html>
+
+<!--  
+@@@@@                                        @@@@@
+@@@@@@@                                      @@@@@@@
+@@@@@@@           @@@@@@@@@@@@@@@            @@@@@@@
+ @@@@@@@@       @@@@@@@@@@@@@@@@@@@        @@@@@@@@
+     @@@@@     @@@@@@@@@@@@@@@@@@@@@     @@@@@
+       @@@@@  @@@@@@@@@@@@@@@@@@@@@@@  @@@@@
+         @@  @@@@@@@@@@@@@@@@@@@@@@@@@  @@
+            @@@@@@@    @@@@@@    @@@@@@
+            @@@@@@      @@@@      @@@@@
+            @@@@@@      @@@@      @@@@@
+             @@@@@@    @@@@@@    @@@@@
+              @@@@@@@@@@@  @@@@@@@@@@
+               @@@@@@@@@@  @@@@@@@@@
+           @@   @@@@@@@@@@@@@@@@@   @@
+           @@@@  @@@@ @ @ @ @ @@@@  @@@@
+          @@@@@   @@@ @ @ @ @ @@@   @@@@@
+        @@@@@      @@@@@@@@@@@@@      @@@@@
+      @@@@          @@@@@@@@@@@          @@@@
+   @@@@@              @@@@@@@              @@@@@
+  @@@@@@@                                 @@@@@@@
+   @@@@@                                   @@@@@
+
+By Cygnus X-1
+
+-->
